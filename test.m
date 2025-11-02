@@ -5,6 +5,9 @@ close all
 %culoarea este NIGGA!!!!!!!!!
 
 % 10 25 150
+step_time = 10;
+initial_value =25;
+final_value  = 150;
 r=150;%referinta
 
 % ce trebuie sa facem: facem fct de ord 1 si dupa facem fct de ord 2 si
@@ -23,7 +26,7 @@ r=150;%referinta
 % data3 = nivel_ursu_3.simout_nivel;
 % [y3, u3,amor3] = filtrareDateSCPI(data3); 
 
-load("matlab_nou (1).mat")
+load("matlab_nou.mat")
 data = out.simout_nivel;
 [y, u,amor] = filtrareDateSCPI(data);
 
@@ -68,7 +71,9 @@ y0 =0;
 u0 = 0;
 
 tmort = 0;
+delta = 1.5;
 zeta = 0.9; % din grafic
+% zeta =1;
 
 tt = 304 - timp_pornire;
 
@@ -78,20 +83,33 @@ Kp = yst;
 
 Hp = Kp /( Tp *s  +1)
 
+tt = 150;
+
 
 omega = 3.9/(zeta*tt);
+% 
+% Tf = omega^2/(s^2 + 2* s*zeta * omega + omega^2);
+% 
+% Td = Tf/(1-Tf);
+% 
+% Tfdo2 = ( omega  * (2*zeta ) ) / ( s * ( 1/( 2*zeta*omega )* s +1 ) ) ;
+% 
+% 
+% 
+% Hr = Td / Tf;
+% minreal(Hr)
+% impulse(Hr)
 
-Tf = omega^2/(s^2 + 2* s*zeta * omega + omega^2);
 
-Td = Tf/(1-Tf);
+H0 = ( omega^2 ) / ( s^2 + 2 * zeta * omega * s +  omega^2 );
+Hd = H0/(1-H0);
+% minreal(Hd)
+Hd2 = ( omega / (2*zeta) ) / ( s * ( 1/ ( 2* zeta* omega) * s  + 1) );
 
-Tfdo2 = ( omega  * (2*zeta ) ) / ( s * ( 1/( 2*zeta*omega )* s +1 ) ) ;
+Hf = Hp;
+Hr =  Hd/ Hf
 
-
-
-Hr = Td / Tf
-minreal(Hr)
-impulse(Hr)
+% minreal(Hr)
 
 
 %  
