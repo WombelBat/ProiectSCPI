@@ -1,12 +1,12 @@
 function [y,u,amortizare] = filtrareDateSCPI(data)
     
 % raw data
-figure;
-plot(data.Time, data.Data);
-grid on;
-xlabel('Time (s)');
-ylabel('Amplitude');
-title('Step Response - Nivel Ursu 1');
+% figure;
+% plot(data.Time, data.Data);
+% grid on;
+% xlabel('Time (s)');
+% ylabel('Amplitude');
+% title('Step Response - Nivel Ursu 1');
 
 
 data.Data(1) = 220;
@@ -48,13 +48,13 @@ newData.Time = data.Time(20:end);
 % Filtru moving average
 windowSize = 5;
 filteredData = movmean(newData.Data, windowSize);
-
-figure;
-plot(newData.Time, filteredData, 'LineWidth', 2);
-grid on;
-xlabel('Time (s)');
-ylabel('Amplitude');
-title('Filtered Step Response');
+% 
+% figure;
+% plot(newData.Time, filteredData, 'LineWidth', 2);
+% grid on;
+% xlabel('Time (s)');
+% ylabel('Amplitude');
+% title('Filtered Step Response');
 
 u = newData.Time;
 y=filteredData;
