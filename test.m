@@ -86,5 +86,7 @@ Hr =  Hd/ Hf;
 L = Hr*Hp;
 S = 1/(1+L);
 % bode(S)
-Hee = 0.04/(5e-3*s^2 + 6.1e-2*s + 55.09e-2);
-Hi = Hee * Hp
+Hee = 0.04/(5e-3*s^2 + 26.1e-2*s + 55.09e-2);
+
+Hpi = Hee * Hp
+Hri = ( 97.67 * s + 1 ) / (12.33*s)
