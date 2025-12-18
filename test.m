@@ -86,9 +86,11 @@ Hr =  Hd/ Hf;
 L = Hr*Hp;
 S = 1/(1+L);
 % bode(S)
-Hee = 0.04/(5e-3*s^2 + 26.1e-2*s + 55.09e-2);
+% Hee = 0.04/(5e-3*s^2 + 26.1e-2*s + 55.09e-2);
+Hee = 0.04/( ( 0.01*s + 0.5) * (0.5*s + 1.1) + 0.03 ^2);
 
-Fe = 22.5/60;
+% proces la presiune
+Fe = 22.5;
 
 po=1;
 R= 8.314;
@@ -97,13 +99,14 @@ V= 19*17*24;
 
 kp = Fe/po;
 tp = V/(R*T);
-Hp2=kp/(tp*s+1)
+Hp2=kp/(tp/10*s+1)
+
 % Hp2 =  12/(1.67*s+1)
 
 
 Hpi = Hee * Hp2
 
-H0i= 1/(4.662*s+1)
+H0i= 1/(tp/10*s+1)
 
 Hdi = H0i/(1-H0i);
 Hri = Hdi/Hp2
