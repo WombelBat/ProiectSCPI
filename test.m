@@ -48,8 +48,10 @@ zeta = 0.8; % din grafic
 tt = 304 - timp_pornire;
 
 Tp = 97.67;
+
 Kp = r/yst;
-Kp = 1.37;
+Kp = yst/r;
+% Kp = 1.37;
 
 Hp = Kp /( Tp *s  +1);
 
@@ -80,6 +82,8 @@ Hd2 = ( omega / (2*zeta) ) / ( s * ( 1/ ( 2* zeta* omega) * s  + 1) ); %bucla de
 Hf = Hp;
 
 Hd = 1/(50*s);
+Hd = H0/(1-H0);
+
 Hr =  Hd/ Hf;
 % Hr = (97.67*s+1) /(3480*s)
 
@@ -90,17 +94,18 @@ S = 1/(1+L);
 Hee = 0.04/( ( 0.01*s + 0.5) * (0.5*s + 1.1) + 0.03 ^2);
 
 % proces la presiune
-Fe = 22.5;
+Fe = 22.5; % l/min (debit)
 
-po=1;
+po=1; %pre
 R= 8.314;
 T=20;
 V= 19*17*24;
 
 kp = Fe/po;
 tp = V/(R*T);
-Hp2=kp/(tp/10*s+1)
+Hp2=kp/(tp/10 *2 *s+1)
 
+% Hp2 = 0.54/(2.43*s +1)
 % Hp2 =  12/(1.67*s+1)
 
 
