@@ -49,7 +49,7 @@ tt = 304 - timp_pornire;
 
 Tp = 97.67;
 
-Kp = r/yst;
+% Kp = r/yst;
 Kp = yst/r;
 % Kp = 1.37;
 
@@ -57,6 +57,7 @@ Hp = Kp /( Tp *s  +1);
 
 
 tt = 150;
+tt= 250;
 
 
 omega = 3.9/(zeta*tt);
@@ -103,7 +104,7 @@ V= 19*17*24;
 
 kp = Fe/po;
 tp = V/(R*T);
-Hp2=kp/(tp/10 *2 *s+1)
+Hp2=kp/(tp/10 *s+1)
 
 % Hp2 = 0.54/(2.43*s +1)
 % Hp2 =  12/(1.67*s+1)
